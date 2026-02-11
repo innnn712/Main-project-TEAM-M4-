@@ -147,3 +147,17 @@ kaggleData01/
 
   ---
   인사이트: 야간 저조도 + 클래스 불균형이 심해서, Focal Loss와 밝기 보정 전처리가 필수적 .....
+
+
+### 용어 집어 보기 
+#### Baseline = 기준점 (모델 :U-Net + ResNet34 ,Loss :CE + Dice,결과 Val mIoU ~0.59 이것을 기준으로 다른 실험과 비교)
+#### 특징 추출 (이미지 -> 압축) : Encoder = Backbone 이번 학습 예시 : ResNet34
+#### 복원 (압축->픽셀별 예측)  : Decoder = Head 이번 학습 예시 : U-Net 디코더 
+정리하면, "U-Net + ResNet34"라고 할 때:
+  - ResNet34 → Encoder(백본) - 갈아끼울 수 있음 (EfficientNet, VGG 등)
+  - U-Net → 전체 Encoder-Decoder 구조를 정의하는 아키텍처
+#### Annotation :이지미에 대한 정답 표시 (라벨링) 모델은 이 어노데이션을 정답(Ground Truth)으로 사용해서학습 
+#### mIOU (mean intersection over union) 세그멘테이션 측정 지표 ,하나의 클래스에 전체 합친부분의 겹치는 부분 즉  모든 클래스으 IoU를 평균낸값
+
+
+
